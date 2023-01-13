@@ -8,15 +8,15 @@ import app.views.OrderView;
 
 public class OrderBController implements BaseController {
 
+    private OrderView view;
     private OrderBModel model;
     private String[] data;
     private String orderCostRounded;
     private String deliveryCostRounded;
-    private double orderCost;
 
     public void handleData() {
 
-        OrderView view = new OrderView();
+        view = new OrderView();
         data = getData();
         model = new OrderBModel();
 
@@ -30,7 +30,7 @@ public class OrderBController implements BaseController {
     }
 
     private String[] getData() {
-        return data;
+        return view.getData();
     }
 
     private double getOrderCost() {
@@ -44,8 +44,8 @@ public class OrderBController implements BaseController {
     }
 
     private String formOutput() {
-        return "\nOrder " + data[0] + " cost is " + orderCostRounded +
-                " " + orderCost + "\nDelivery cost is " + Constants.CURRENCY +
+        return "\nOrder " + data[0] + " cost is " + Constants.CURRENCY +
+                " " + orderCostRounded + "\nDelivery cost is " + Constants.CURRENCY +
                 " " + deliveryCostRounded;
     }
 }

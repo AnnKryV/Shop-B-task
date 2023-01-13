@@ -1,6 +1,7 @@
 package app.controllers;
 
 import app.base.BaseController;
+import app.base.BaseModel;
 import app.models.OrderAModel;
 import app.utils.Constants;
 import app.utils.Rounder;
@@ -15,16 +16,15 @@ public class OrderAController implements BaseController{
 
     @Override
     public void handleData() {
-
         view = new OrderView();
         data = getData();
         model = new OrderAModel();
-        costRounded = Rounder.roundValue();
+        costRounded = Rounder.roundValue(Double.parseDouble(data[0]));
         view.getOutput(formOutput());
     }
 
     private String[] getData() {
-        return null;
+        return view.getData();
     }
 
     private double getOrderCost() {
